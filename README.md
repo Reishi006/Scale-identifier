@@ -2,5 +2,5 @@
 Musical scale identifier built with HTML, CSS and JavaScript
 
 =================WIP=================  
-Basic functionality of the app is to recognize common (maybe later some less known/ordinary) musical scales e.g. C Major or F Minor.
+Basic functionality of the app is to recognize common (maybe later some less known/ordinary) musical scales e.g. C Major or F Harmonic Minor.
 If the above features work, there might be some room for chords recognition but at the moment I won't take it to the consideration or realization.
