@@ -1,6 +1,9 @@
 body {
     background-color: cadetblue;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 header {
@@ -16,6 +19,7 @@ header {
     margin: 50px auto;
     text-align: center;
     display: grid;
+    grid-auto-flow: column;
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 0px;
