@@ -7,14 +7,16 @@
     <link rel="icon" type="image/x-icon" href="/guitaricon.png">
     <title>Musical scale identifier</title>
 </head>
-<body>
+<body onload="divOnload()">
     <header>Musical scale identifier</header>
     <article id="container">
-        <!--<div><svg class="string"><line x1="0" y1="1" x2="100%" y2="1" /></svg></div>-->
+        
     </article>
 
     <article>How many frets to show?</article>
     10<input type="range" min="10" max="24" value="12" id="fretRange" onchange="fretLimit()">24
+
+    <div id="value"></div>
     
     <script src="scaleidentifier.js"></script>
 </body>
