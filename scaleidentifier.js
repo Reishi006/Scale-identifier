@@ -70,6 +70,8 @@ function createString(stringNo, fretNo) {
         container.appendChild(div);
         div.appendChild(svg);
         svg.appendChild(line);
+
+        document.getElementById(`${stringNo}_${fretNo}`).addEventListener('click', function () {createCircle(stringNo, fretNo)});
     }
 }
 
@@ -83,6 +85,7 @@ function removeDiv(num) {
     val.textContent = num;
     stringNum = 6;
     for (let i = beforeFrets * 6; i > num * 6; i--) {
+        document.getElementById(`${stringNum}_${fretNum}`).removeEventListener('click', function () {createCircle()});
         document.getElementById(`${stringNum}_${fretNum}`).remove();
         console.log(`${stringNum}_${fretNum} has been removed`);
         stringNum--;
@@ -91,6 +94,21 @@ function removeDiv(num) {
             fretNum--;
         }
     }
+}
+
+
+function createCircle(stringNo, fretNo) {
+    let circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+
+    circle.setAttribute('cx', '50%');
+    circle.setAttribute('cy', '0%');
+    circle.setAttribute('r', '12%');
+    circle.setAttribute('stroke', 'darkblue');
+    circle.setAttribute('stroke-width', '3px');
+    circle.setAttribute('fill', 'lightblue');
+
+    container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
+    console.log('clicked');
 }
 
 document.addEventListener('load', divOnload());
