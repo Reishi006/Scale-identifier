@@ -72,6 +72,9 @@ function createString(stringNo, fretNo) {
         svg.appendChild(line);
 
         document.getElementById(`${stringNo}_${fretNo}`).addEventListener('click', function () {createCircle(stringNo, fretNo)});
+
+        //--------------------MIGHT BE USEFUL-----------------
+        //DIVS LATER TO BE REMOVED/ADJUSTED ---> REMOVE DIVS KEEP SVGS AS ID HOLDERS
     }
 }
 
