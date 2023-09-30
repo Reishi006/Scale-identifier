@@ -1,4 +1,5 @@
 let container = document.getElementById('container');
+let fretIndicator = document.getElementById('fret-indicators');
 let input = document.getElementById('fretRange');
 let val = document.getElementById('value');
 
@@ -8,7 +9,7 @@ let beforeFrets = maxFrets;
 let stringNum = 1;
 let fretNum = 1;
 
-
+let fretCheck = false;
 
 
 function fretLimit() {
@@ -20,8 +21,12 @@ function fretLimit() {
         for (let i = 1; i < maxFrets * 6; i++) {
             createDiv(maxFrets);
         }
+        fretCheck = false;
+        createIndicators(maxFrets);
     } else if (beforeFrets > maxFrets) {
         removeDiv(maxFrets);
+
+        removeIndicators(maxFrets);
     }
     
     
@@ -70,6 +75,11 @@ function createString(stringNo, fretNo) {
         container.appendChild(div);
         div.appendChild(svg);
         svg.appendChild(line);
+
+        document.getElementById(`${stringNo}_${fretNo}`).addEventListener('click', function () {createCircle(stringNo, fretNo)});
+
+        //--------------------MIGHT BE USEFUL-----------------
+        //DIVS LATER TO BE REMOVED/ADJUSTED ---> REMOVE DIVS KEEP SVGS AS ID HOLDERS
     }
 }
 
@@ -77,12 +87,14 @@ function divOnload() {
     for (let i = 1; i <= maxFrets * 6; i++) {
         createDiv(maxFrets);
     }
+    createIndicators(maxFrets);
 }
 
 function removeDiv(num) {
     val.textContent = num;
     stringNum = 6;
     for (let i = beforeFrets * 6; i > num * 6; i--) {
+        document.getElementById(`${stringNum}_${fretNum}`).removeEventListener('click', function () {createCircle()});
         document.getElementById(`${stringNum}_${fretNum}`).remove();
         console.log(`${stringNum}_${fretNum} has been removed`);
         stringNum--;
@@ -91,6 +103,47 @@ function removeDiv(num) {
             fretNum--;
         }
     }
+}
+
+function createIndicators(frets) {
+    if (fretCheck == false) {
+        for (let i = 1; i <= frets; i++) {
+            let fretExist = document.getElementById(`fret${i}`)
+            if (fretExist == null) {
+                let div = document.createElement('div');
+                console.log(frets);
+                div.textContent = i;
+                if (i == 3) div.setAttribute('background-color', 'red');
+                
+                div.setAttribute('id', `fret${i}`);
+        
+                fretIndicator.appendChild(div);
+            }
+        }
+    }
+    
+    fretCheck = true;
+}
+
+function removeIndicators(frets) {
+    for (let i = beforeFrets; i > frets; i--) {
+        document.getElementById(`fret${i}`).remove();
+        console.log(`fret${i} indicator removing`);
+    }
+}
+
+function createCircle(stringNo, fretNo) {
+    let circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+
+    circle.setAttribute('cx', '50%');
+    circle.setAttribute('cy', '0%');
+    circle.setAttribute('r', '12%');
+    circle.setAttribute('stroke', 'darkblue');
+    circle.setAttribute('stroke-width', '3px');
+    circle.setAttribute('fill', 'lightblue');
+
+    container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
+    console.log('clicked');
 }
 
 document.addEventListener('load', divOnload());

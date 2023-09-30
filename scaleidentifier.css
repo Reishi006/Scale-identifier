@@ -43,3 +43,13 @@ line {
     stroke: darkblue; 
     stroke-width: 3px;
 }
+
+#fret-indicators {
+    max-width: 768px;
+    margin: 10px auto;
+    text-align: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: 1, 1fr;
+}
