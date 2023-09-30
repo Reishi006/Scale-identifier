@@ -9,6 +9,7 @@ let beforeFrets = maxFrets;
 let stringNum = 1;
 let fretNum = 1;
 
+let fretHighlight = [3, 5, 7, 12, 15, 17, 19, 21, 24];
 let fretCheck = false;
 
 
@@ -95,6 +96,7 @@ function removeDiv(num) {
     stringNum = 6;
     for (let i = beforeFrets * 6; i > num * 6; i--) {
         document.getElementById(`${stringNum}_${fretNum}`).removeEventListener('click', function () {createCircle()});
+        document.getElementById(`${stringNum}_${fretNum}`).removeEventListener('click', function () {removeCircle()});
         document.getElementById(`${stringNum}_${fretNum}`).remove();
         console.log(`${stringNum}_${fretNum} has been removed`);
         stringNum--;
@@ -113,7 +115,11 @@ function createIndicators(frets) {
                 let div = document.createElement('div');
                 console.log(frets);
                 div.textContent = i;
-                if (i == 3) div.setAttribute('background-color', 'red');
+                if (fretHighlight.includes(i)) {
+                    div.style.fontWeight = 'bold';
+                    div.style.fontStyle = 'italic';
+                    div.style.fontSize = 'larger';
+                }
                 
                 div.setAttribute('id', `fret${i}`);
         
@@ -128,22 +134,37 @@ function createIndicators(frets) {
 function removeIndicators(frets) {
     for (let i = beforeFrets; i > frets; i--) {
         document.getElementById(`fret${i}`).remove();
-        console.log(`fret${i} indicator removing`);
+        console.log(`fret${i} indicator removal`);
     }
 }
 
 function createCircle(stringNo, fretNo) {
-    let circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    let circleExist = document.querySelector(`div[id="${stringNo}_${fretNo}"] > svg[class="string"] > circle`); //circle > [id="${stringNo}_${fretNo}"] > [class="string"]
+    console.log(`CIRCLEEXIST: ${circleExist}`);
+    
+    if (circleExist == null) {
+        let circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
 
-    circle.setAttribute('cx', '50%');
-    circle.setAttribute('cy', '0%');
-    circle.setAttribute('r', '12%');
-    circle.setAttribute('stroke', 'darkblue');
-    circle.setAttribute('stroke-width', '3px');
-    circle.setAttribute('fill', 'lightblue');
+        circle.setAttribute('cx', '50%');
+        circle.setAttribute('cy', '0%');
+        circle.setAttribute('r', '12%');
+        circle.setAttribute('stroke', 'darkblue');
+        circle.setAttribute('stroke-width', '3px');
+        circle.setAttribute('fill', 'lightblue');
 
-    container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
-    console.log('clicked');
+        container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
+        console.log('clicked');
+    } else {
+        removeCircle(stringNo, fretNo);
+    }
 }
+
+
+function removeCircle(stringNo, fretNo) {
+    document.getElementById(`${stringNum}_${fretNum}`).removeEventListener('click', function () {createCircle()});
+    container.querySelector(`div[id="${stringNo}_${fretNo}"] > svg[class="string"] > circle`).remove();
+    console.log(`circle with id="${stringNo}_${fretNo}" removed`);
+}
+
 
 document.addEventListener('load', divOnload());
