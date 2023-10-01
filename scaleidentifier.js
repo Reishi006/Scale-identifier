@@ -64,12 +64,12 @@ function createString(stringNo, fretNo) {
         svg.classList.add('string');
 
         svg.setAttribute('width', '100%');
-        svg.setAttribute('height', '100%');
+        svg.setAttribute('height', '30px');
 
         line.setAttribute('x1', '0');
         line.setAttribute('x2', '100%');
-        line.setAttribute('y1', '1');
-        line.setAttribute('y2', '1');
+        line.setAttribute('y1', '50%');
+        line.setAttribute('y2', '50%');
         line.setAttribute('stroke', 'blue');
         line.setAttribute('stroke-width', '3px');
 
@@ -146,8 +146,8 @@ function createCircle(stringNo, fretNo) {
         let circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
 
         circle.setAttribute('cx', '50%');
-        circle.setAttribute('cy', '0%');
-        circle.setAttribute('r', '12%');
+        circle.setAttribute('cy', '50%');
+        circle.setAttribute('r', '40%');
         circle.setAttribute('stroke', 'darkblue');
         circle.setAttribute('stroke-width', '3px');
         circle.setAttribute('fill', 'lightblue');
