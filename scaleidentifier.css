@@ -47,3 +47,16 @@ line {
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: 1, 1fr;
 }
+
+button {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(0, 195, 209);
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color:rgb(72, 255, 255);
+}
