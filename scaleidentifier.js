@@ -161,10 +161,22 @@ function createCircle(stringNo, fretNo) {
 
 
 function removeCircle(stringNo, fretNo) {
-    document.getElementById(`${stringNum}_${fretNum}`).removeEventListener('click', function () {createCircle()});
+    document.getElementById(`${stringNo}_${fretNo}`).removeEventListener('click', function () {createCircle()});
     container.querySelector(`div[id="${stringNo}_${fretNo}"] > svg[class="string"] > circle`).remove();
     console.log(`circle with id="${stringNo}_${fretNo}" removed`);
 }
 
+function removeAllCircles(stringNo, fretNo) {
+    for (let i = 1; i <= stringNo; i++) {
+        for (j = 1; j <= fretNo; j++) {
+            let circleExist = document.querySelector(`div[id="${i}_${j}"] > svg[class="string"] > circle`);
+            if (circleExist != null) {
+            console.log(`isnt null`);
+            removeCircle(i, j);
+            }
+        }
+    }
+    console.log(`allcircles removed`);
+}
 
 document.addEventListener('load', divOnload());
