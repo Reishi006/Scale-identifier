@@ -13,6 +13,10 @@ let fretHighlight = [3, 5, 7, 12, 15, 17, 19, 21, 24];
 let fretCheck = false;
 
 
+function generateTuningNotes() {
+
+}
+
 function fretLimit() {
     
     beforeFrets = maxFrets;
