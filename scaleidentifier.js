@@ -161,15 +161,23 @@ function createCircle(stringNo, fretNo) {
     
     if (circleExist == null) {
         let circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        let text = document.createElementNS('http://www.w3.org/2000/svg','text');
 
         circle.setAttribute('cx', '50%');
         circle.setAttribute('cy', '50%');
-        circle.setAttribute('r', '40%');
+        circle.setAttribute('r', '42%');
         circle.setAttribute('stroke', 'darkblue');
         circle.setAttribute('stroke-width', '3px');
         circle.setAttribute('fill', 'lightblue');
 
+        text.setAttribute('x', '30%');
+        text.setAttribute('y', '67.7%');
+        text.setAttribute('fill', 'black');
+        text.textContent = `${notes[1]}`;
+        text.setAttribute('font-size', '13px');
+
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
+        container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(text);
         console.log('clicked');
     } else {
         removeCircle(stringNo, fretNo);
