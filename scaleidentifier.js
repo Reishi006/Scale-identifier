@@ -1,3 +1,16 @@
+
+let notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step;
+let interval = 7;
+//0_2_4_5_7_9_11
+let j = 0;
+for (let i = 0; i < interval+stepsMajor.length-2; i++) {
+    console.log(`${i}, ${notes[i+stepsMajor[j]]}`);
+    i = i + stepsMajor[j];
+    j++;
+}
+j = 0;
+
 let container = document.getElementById('container');
 let fretIndicator = document.getElementById('fret-indicators');
 let input = document.getElementById('fretRange');
