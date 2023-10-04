@@ -1,3 +1,26 @@
+class Tuning {
+    constructor() {
+        this.string1 = string1;
+        this.string2 = string2;
+        this.string3 = string3;
+        this.string4 = string4;
+        this.string5 = string5;
+        this.string6 = string6;
+    }
+}
+
+const Estandard = new Tuning(notes[4], notes[11], notes[7], notes[2], notes[9], notes[4]);
+const DStandard = new Tuning(notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]);
+
+/* let Estandard = {
+    string1: notes[4],
+    string2: notes[11],
+    string3: notes[7],
+    string4: notes[2],
+    string5: notes[9],
+    string6: notes[4]
+} */
+
 
 let notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
 let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step;
@@ -161,15 +184,23 @@ function createCircle(stringNo, fretNo) {
     
     if (circleExist == null) {
         let circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        let text = document.createElementNS('http://www.w3.org/2000/svg','text');
 
         circle.setAttribute('cx', '50%');
         circle.setAttribute('cy', '50%');
-        circle.setAttribute('r', '40%');
+        circle.setAttribute('r', '42%');
         circle.setAttribute('stroke', 'darkblue');
         circle.setAttribute('stroke-width', '3px');
         circle.setAttribute('fill', 'lightblue');
 
+        text.setAttribute('x', '25%');
+        text.setAttribute('y', '67.7%');
+        text.setAttribute('fill', 'black');
+        text.textContent = `${notes[3]}`;
+        text.setAttribute('font-size', '13px');
+
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
+        container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(text);
         console.log('clicked');
     } else {
         removeCircle(stringNo, fretNo);
