@@ -1,5 +1,10 @@
+let notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step;
+let interval = 7;
+//0_2_4_5_7_9_11
+
 class Tuning {
-    constructor() {
+    constructor(string1, string2, string3, string4, string5, string6) {
         this.string1 = string1;
         this.string2 = string2;
         this.string3 = string3;
@@ -12,6 +17,8 @@ class Tuning {
 const Estandard = new Tuning(notes[4], notes[11], notes[7], notes[2], notes[9], notes[4]);
 const DStandard = new Tuning(notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]);
 
+console.log(Estandard);
+
 /* let Estandard = {
     string1: notes[4],
     string2: notes[11],
@@ -21,11 +28,6 @@ const DStandard = new Tuning(notes[3], notes[10], notes[6], notes[1], notes[8], 
     string6: notes[4]
 } */
 
-
-let notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step;
-let interval = 7;
-//0_2_4_5_7_9_11
 let j = 0;
 for (let i = 0; i < interval+stepsMajor.length-2; i++) {
     console.log(`${i}, ${notes[i+stepsMajor[j]]}`);
@@ -51,6 +53,13 @@ let fretCheck = false;
 
 function generateTuningNotes() {
 
+}
+
+function changeTuning() {
+    for (let i = 1; i <= 6; i++) {
+        let tune = document.getElementById(`0_${i}`);
+    }
+    console.log(`tuning changed`);
 }
 
 function fretLimit() {
