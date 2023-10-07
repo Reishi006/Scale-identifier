@@ -16,8 +16,9 @@ header {
 
 select {
     margin: 10px;
-    padding: 5px;
+    padding: 10px;
     background-color: rgb(115, 184, 161);
+    outline: none;
     border: 1px solid darkcyan;
     border-radius: 5px;
 }
