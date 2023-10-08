@@ -3,24 +3,9 @@ let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step;
 let interval = 7;
 //0_2_4_5_7_9_11
 
-/* class Tuning {
-    constructor(string1, string2, string3, string4, string5, string6) {
-        this.string1 = string1;
-        this.string2 = string2;
-        this.string3 = string3;
-        this.string4 = string4;
-        this.string5 = string5;
-        this.string6 = string6;
-    }
-}
-
-const Estandard = new Tuning(notes[4], notes[11], notes[7], notes[2], notes[9], notes[4]);
-const DStandard = new Tuning(notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]); */
-
-//console.log(Estandard);
-
 let eStandard = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[4]];
-let dStandard = [notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]]
+let dStandard = [notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]];
+let dropD = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[2]];
 
 let j = 0;
 for (let i = 0; i < interval + stepsMajor.length - 2; i++) {
@@ -45,16 +30,19 @@ let fretHighlight = [3, 5, 7, 12, 15, 17, 19, 21, 24];
 let fretCheck = false;
 
 
-function generateTuningNotes() {
-
-}
-
 function changeTuning() {
     for (let i = 1; i <= 6; i++) {
         let tune = document.getElementById(`${i}_0`);
-        tune.innerHTML = dStandard[i-1];
+        let selectTuning = document.querySelector('#tunings');
+        console.log(eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]'));
+        output = eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]');
+        tune.textContent = output;
     }
     console.log(`tuning changed`);
+}
+
+function countNote() {
+    
 }
 
 function fretLimit() {
@@ -215,6 +203,7 @@ function createCircle(stringNo, fretNo) {
 function removeCircle(stringNo, fretNo) {
     document.getElementById(`${stringNo}_${fretNo}`).removeEventListener('click', function () {createCircle()});
     container.querySelector(`div[id="${stringNo}_${fretNo}"] > svg[class="string"] > circle`).remove();
+    container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"] > text`).remove();
     console.log(`circle with id="${stringNo}_${fretNo}" removed`);
 }
 
