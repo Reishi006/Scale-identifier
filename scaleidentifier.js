@@ -41,8 +41,10 @@ function changeTuning() {
     console.log(`tuning changed`);
 }
 
-function countNote() {
-    
+function countNote(stringNo, fretNo) {
+    let notePosition = document.getElementById(`${stringNo}_${fretNo}`);
+    let tempNoteVar = eStandard[stringNo-1];
+    console.log(`tempNoteVar ${tempNoteVar}`);
 }
 
 function fretLimit() {
@@ -190,6 +192,8 @@ function createCircle(stringNo, fretNo) {
         text.setAttribute('fill', 'black');
         text.textContent = `${notes[3]}`;
         text.setAttribute('font-size', '13px');
+
+        countNote(stringNo, fretNo);
 
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(text);
