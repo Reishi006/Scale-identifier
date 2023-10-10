@@ -23,33 +23,13 @@ select {
     border-radius: 5px;
 }
 
-#big-container {
-    max-width: 900px;
-    max-height: 304px;
-    margin: auto auto;
-    display: grid;
-    grid-template-columns: 1fr 24fr 1fr;
-    grid-column-gap: 0px;
-}
-
-#tuning {
-    max-height: inherit;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
-}
-
-#tuning > div {
-    height: 30px;
-}
-
 #container {
     max-width: 768px;
     margin: 50px auto;
     text-align: center;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(25, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -73,7 +53,7 @@ line {
     text-align: center;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(25, 1fr);
     grid-template-rows: 1, 1fr;
 }
 
