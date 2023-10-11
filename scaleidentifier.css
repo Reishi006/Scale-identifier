@@ -1,4 +1,5 @@
 body {
+    margin: 30px auto;
     background-color: cadetblue;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
@@ -67,5 +68,5 @@ button {
 }
 
 button:hover {
-    background-color:rgb(72, 255, 255);
+    background-color:rgb(54, 211, 211);
 }
