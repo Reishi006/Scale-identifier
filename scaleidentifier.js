@@ -3,9 +3,12 @@ let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step;
 let interval = 7;
 //0_2_4_5_7_9_11
 
-let eStandard = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[4]];
-let dStandard = [notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]];
-let dropD = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[2]];
+//let eStandard = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[4]];
+let eStandard = [4, 11, 7, 2, 9, 4];
+//let dStandard = [notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]];
+let dStandard = [3, 10, 6, 1, 8, 3];
+//let dropD = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[2]];
+let dropD = [4, 11, 7, 2, 9, 2];
 
 let j = 0;
 for (let i = 0; i < interval + stepsMajor.length - 2; i++) {
@@ -34,8 +37,8 @@ function changeTuning() {
     for (let i = 1; i <= 6; i++) {
         let tune = document.getElementById(`${i}_0`);
         let selectTuning = document.querySelector('#tunings');
-        console.log(eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]'));
-        output = eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]');
+        console.log(notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]')]);
+        output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]')];
         tune.textContent = output;
     }
     console.log(`tuning changed`);
@@ -45,6 +48,10 @@ function countNote(stringNo, fretNo) {
     let notePosition = document.getElementById(`${stringNo}_${fretNo}`);
     let tempNoteVar = eStandard[stringNo-1];
     console.log(`tempNoteVar ${tempNoteVar}`);
+    //TESTS
+    /* let selectTuning = document.querySelector('#tunings');
+    console.log(notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]')]);
+    output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]')]; */
 }
 
 function fretLimit() {
