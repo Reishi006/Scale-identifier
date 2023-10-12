@@ -45,13 +45,23 @@ function changeTuning() {
 }
 
 function countNote(stringNo, fretNo) {
-    let notePosition = document.getElementById(`${stringNo}_${fretNo}`);
-    let tempNoteVar = eStandard[stringNo-1];
-    console.log(`tempNoteVar ${tempNoteVar}`);
-    //TESTS
+    //TESTS (not tests anymore, it works!)
     let selectTuning = document.querySelector('#tunings');
+
+
+    let noteIndex = eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo');
+
+    if (noteIndex < 12) output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo')];
+    else if (noteIndex >= 12 && noteIndex < 24) output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo - 12')];
+    else if (noteIndex >= 24) output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo - 24')];
+    
+    //output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo-12')];
+    console.log(`toNoteIndex: ${eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo')}`)
+    console.log(`Output: ${output}`);
     console.log(`notes eval countNote ${notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]')]}`);
-    output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]')];
+    //let noteIndex = notes.findIndex(eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]'));
+    //console.log(`noteIndex ${noteIndex}`);
+    return output;
 }
 
 function fretLimit() {
@@ -197,7 +207,7 @@ function createCircle(stringNo, fretNo) {
         text.setAttribute('x', '25%');
         text.setAttribute('y', '67.7%');
         text.setAttribute('fill', 'black');
-        text.textContent = `${notes[3]}`;
+        text.textContent = `${countNote(stringNo, fretNo)}`;
         text.setAttribute('font-size', '13px');
 
         countNote(stringNo, fretNo);
