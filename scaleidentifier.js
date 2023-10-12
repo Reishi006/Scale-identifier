@@ -49,9 +49,9 @@ function countNote(stringNo, fretNo) {
     let tempNoteVar = eStandard[stringNo-1];
     console.log(`tempNoteVar ${tempNoteVar}`);
     //TESTS
-    /* let selectTuning = document.querySelector('#tunings');
-    console.log(notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]')]);
-    output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]')]; */
+    let selectTuning = document.querySelector('#tunings');
+    console.log(`notes eval countNote ${notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]')]}`);
+    output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]')];
 }
 
 function fretLimit() {
