@@ -204,7 +204,8 @@ function createCircle(stringNo, fretNo) {
         circle.setAttribute('stroke-width', '3px');
         circle.setAttribute('fill', 'lightblue');
 
-        text.setAttribute('x', '25%');
+        if (countNote(stringNo, fretNo).indexOf('#') == -1) text.setAttribute('x', '35%'); //centering a note letter in case it takes 'one space'
+        else text.setAttribute('x', '25%'); // centering a note letter in case it takes 'two spaces' like a sharp note or flat
         text.setAttribute('y', '67.7%');
         text.setAttribute('fill', 'black');
         text.textContent = `${countNote(stringNo, fretNo)}`;
