@@ -61,6 +61,7 @@ line {
 #fretRange {
     -webkit-appearance: none;
     appearance: none;
+    height: 10px;
     background-color: rgb(115, 184, 161);
     border-radius: 15px;
 }
@@ -72,15 +73,27 @@ line {
     height: 15px;
     background-color: rgb(39, 109, 100);
     border-radius: 15px;
+    cursor: pointer;
+}
+
+#fretRange::-webkit-slider-thumb:hover {
+    width: 18px;
+    height: 18px;
+    background-color: rgb(51, 139, 128);
 }
 
 #fretRange::-moz-range-thumb {
-    -webkit-appearance: none;
-    appearance: none;
     width: 15px;
     height: 15px;
     background-color: rgb(39, 109, 100);
     border-radius: 15px;
+    cursor: pointer;
+}
+
+#fretRange::-moz-range-thumb:hover {
+    width: 18px;
+    height: 18px;
+    background-color: rgb(51, 139, 128);
 }
 
 button {
