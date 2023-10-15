@@ -35,6 +35,18 @@ let fretCheck = false;
 
 function changeTuning() {
     for (let i = 1; i <= 6; i++) {
+        for (let j = 1; j <= 24; j++) {
+            let text = container.querySelector(`[id="${i}_${j}"] > [class="string"] > text`);
+            let circleExist = document.querySelector(`[id="${i}_${j}"] > [class="string"] > circle`);
+            //console.log(`circelExist: ${circleExist} i: ${i} and j: ${j}`);
+            //console.log(`countNote${countNote(i, j)}`);
+            if (circleExist != null) {
+                text.textContent = `${countNote(i, j)}`;
+                console.log(`countNote inside changeTuning: ${countNote(i, j)}`)
+            }
+        }
+    }
+    for (let i = 1; i <= 6; i++) {
         let tune = document.getElementById(`${i}_0`);
         let selectTuning = document.querySelector('#tunings');
         console.log(notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[i-1]')]);
@@ -47,8 +59,8 @@ function changeTuning() {
 function countNote(stringNo, fretNo) {
     //TESTS (not tests anymore, it works!)
     let selectTuning = document.querySelector('#tunings');
-
-
+    /* let text = container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"] > text`);
+    console.log(`countNote stringNo and fretNo: ${stringNo} ${fretNo}`); */
     let noteIndex = eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo');
 
     if (noteIndex < 12) output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo')];
@@ -61,6 +73,15 @@ function countNote(stringNo, fretNo) {
     console.log(`notes eval countNote ${notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]')]}`);
     //let noteIndex = notes.findIndex(eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]'));
     //console.log(`noteIndex ${noteIndex}`);
+    /* console.log(`text: ${text}`);
+    if (output.indexOf('#') == -1 && text != null) {
+        text.removeAttribute('x');
+        text.setAttribute('x', '35%');
+    }
+    else {
+        text.removeAttribute('x');
+        text.setAttribute('x', '25%');
+    } */
     return output;
 }
 
