@@ -42,7 +42,9 @@ function changeTuning() {
             //console.log(`countNote${countNote(i, j)}`);
             if (circleExist != null) {
                 text.textContent = `${countNote(i, j)}`;
-                console.log(`countNote inside changeTuning: ${countNote(i, j)}`)
+                if (countNote(i, j).indexOf('#') == -1) text.setAttribute('x', '35%'); //centering a note letter in case it takes 'one space'
+                else text.setAttribute('x', '25%'); // centering a note letter in case it takes 'two spaces' like a sharp note or flat
+                console.log(`countNote inside changeTuning: ${countNote(i, j)}`); //^ the 'if else' statement occurs also in createCircle() the same way as shown here
             }
         }
     }
@@ -59,8 +61,6 @@ function changeTuning() {
 function countNote(stringNo, fretNo) {
     //TESTS (not tests anymore, it works!)
     let selectTuning = document.querySelector('#tunings');
-    /* let text = container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"] > text`);
-    console.log(`countNote stringNo and fretNo: ${stringNo} ${fretNo}`); */
     let noteIndex = eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo');
 
     if (noteIndex < 12) output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo')];
@@ -73,15 +73,6 @@ function countNote(stringNo, fretNo) {
     console.log(`notes eval countNote ${notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]')]}`);
     //let noteIndex = notes.findIndex(eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]'));
     //console.log(`noteIndex ${noteIndex}`);
-    /* console.log(`text: ${text}`);
-    if (output.indexOf('#') == -1 && text != null) {
-        text.removeAttribute('x');
-        text.setAttribute('x', '35%');
-    }
-    else {
-        text.removeAttribute('x');
-        text.setAttribute('x', '25%');
-    } */
     return output;
 }
 
@@ -231,8 +222,6 @@ function createCircle(stringNo, fretNo) {
         text.setAttribute('fill', 'black');
         text.textContent = `${countNote(stringNo, fretNo)}`;
         text.setAttribute('font-size', '13px');
-
-        countNote(stringNo, fretNo);
 
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(text);
