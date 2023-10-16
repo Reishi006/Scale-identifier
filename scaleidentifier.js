@@ -18,6 +18,8 @@ for (let i = 0; i < interval + stepsMajor.length - 2; i++) {
 }
 j = 0;
 
+let clickedNote = document.querySelectorAll(`article[id="notes"] > div`); //highlightNote
+
 let container = document.getElementById('container');
 let fretIndicator = document.getElementById('fret-indicators');
 let input = document.getElementById('fretRange');
@@ -251,5 +253,30 @@ function removeAllCircles(stringNo, fretNo) {
     }
     console.log(`allcircles removed`);
 }
+
+//TESTING NEWER FEATURES/IDEAS
+/* const highlightNote = () => {
+    
+    clickedNote.style.fontWeight = 'bold';
+    console.log(clickedNote.textContent);
+} */
+
+clickedNote.forEach((div) => {
+    div.addEventListener('click', () => {
+        clickedNote.forEach((div) => {
+            div.style.fontWeight = 'normal';
+            div.style.backgroundColor = '';
+        })
+        if (div.style.fontWeight != 'bold') {
+            div.style.fontWeight = 'bold';
+            div.style.backgroundColor = 'rgb(30, 196, 187)';
+        }
+        else {
+            div.style.fontWeight = 'normal';
+            div.style.backgroundColor = '';
+        }
+        console.log("forEach worked");
+    });
+  });
 
 document.addEventListener('load', divOnload());
