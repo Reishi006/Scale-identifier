@@ -18,7 +18,8 @@ for (let i = 0; i < interval + stepsMajor.length - 2; i++) {
 }
 j = 0;
 
-let clickedNote = document.querySelectorAll(`article[id="notes"] > div`); //highlightNote
+let clickedNote = document.querySelectorAll(`article[id="notes"] > div`);
+let clickedScale = document.querySelectorAll(`article[id="scales"] > div`);
 
 let container = document.getElementById('container');
 let fretIndicator = document.getElementById('fret-indicators');
@@ -261,22 +262,40 @@ function removeAllCircles(stringNo, fretNo) {
     console.log(clickedNote.textContent);
 } */
 
-clickedNote.forEach((div) => {
-    div.addEventListener('click', () => {
-        clickedNote.forEach((div) => {
-            div.style.fontWeight = 'normal';
-            div.style.backgroundColor = '';
+clickedNote.forEach((note) => {
+    note.addEventListener('click', () => {
+        clickedNote.forEach((note) => {
+            note.style.fontWeight = 'normal';
+            note.style.backgroundColor = '';
         })
-        if (div.style.fontWeight != 'bold') {
-            div.style.fontWeight = 'bold';
-            div.style.backgroundColor = 'rgb(30, 196, 187)';
+        if (note.style.fontWeight != 'bold') {
+            note.style.fontWeight = 'bold';
+            note.style.backgroundColor = 'rgb(30, 196, 187)';
         }
         else {
-            div.style.fontWeight = 'normal';
-            div.style.backgroundColor = '';
+            note.style.fontWeight = 'normal';
+            note.style.backgroundColor = '';
         }
-        console.log("forEach worked");
+        console.log("forEach with notes worked");
     });
-  });
+});
+
+clickedScale.forEach((scale) => {
+    scale.addEventListener('click', () => {
+        clickedScale.forEach((scale) => {
+            scale.style.color = 'black';
+            scale.style.backgroundColor = '';
+        })
+        if (scale.style.color != 'rgb(211, 240, 238)') {
+            scale.style.color = 'rgb(211, 240, 238)';
+            scale.style.backgroundColor = 'rgb(22, 148, 142)';
+        }
+        else {
+            scale.style.color = 'black';
+            scale.style.backgroundColor = '';
+        }
+        console.log("forEach with scales worked");
+    });
+});
 
 document.addEventListener('load', divOnload());
