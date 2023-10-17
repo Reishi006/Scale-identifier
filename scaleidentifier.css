@@ -122,5 +122,29 @@ button:hover {
     grid-auto-flow: column;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1, 1fr;
+    background-color: rgb(78, 129, 131);
+    border-radius: 5px;
     font-size: 20px;
+}
+
+#notes > div {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#scales {
+    max-width: 768px;
+    margin: 10px auto;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1, 1fr;
+    background-color: rgb(78, 129, 131);
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+#scales > div {
+    padding: 5px;
+    border-radius: 5px;
 }
