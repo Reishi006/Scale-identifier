@@ -18,6 +18,8 @@ for (let i = 0; i < interval + stepsMajor.length - 2; i++) {
 }
 j = 0;
 
+let clickedTuningNote = document.querySelectorAll(`article[id="container"] > div`);
+
 let clickedNote = document.querySelectorAll(`article[id="notes"] > div`);
 let clickedScale = document.querySelectorAll(`article[id="scales"] > div`);
 
@@ -261,6 +263,20 @@ function removeAllCircles(stringNo, fretNo) {
     clickedNote.style.fontWeight = 'bold';
     console.log(clickedNote.textContent);
 } */
+
+clickedTuningNote.forEach((tnote) => {
+    tnote.addEventListener('click', () => {
+        if (tnote.style.backgroundColor != 'lightblue') {
+            tnote.style.border = '3px solid darkblue';
+            tnote.style.backgroundColor = 'lightblue';
+        }
+        else {
+            tnote.style.border = 'none';
+            tnote.style.backgroundColor = '';
+        }
+        console.log("forEach with notes worked");
+    })
+})
 
 clickedNote.forEach((note) => {
     note.addEventListener('click', () => {
