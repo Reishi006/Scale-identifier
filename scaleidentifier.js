@@ -254,6 +254,15 @@ function removeAllCircles(stringNo, fretNo) {
             }
         }
     }
+
+    for (let i = 1; i <= 6; i++) {
+        let cTN = document.querySelector(`article[id="container"] > div[id="${i}_0"]`); //clickedTuningNote
+        console.log(`cTN${cTN}`);
+        if (cTN.style.border != null) {
+            cTN.style.border = 'none';
+            cTN.style.backgroundColor = '';
+        }
+    }
     console.log(`allcircles removed`);
 }
 
