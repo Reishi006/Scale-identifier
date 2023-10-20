@@ -102,20 +102,6 @@ function fretLimit() {
 }
 
 
-function createDiv(num) {
-
-    val.textContent = num;
-
-    createString(stringNum, fretNum);
-
-    stringNum++;
-    if (stringNum > 6) {
-        stringNum = 1;
-        if (fretNum < num) fretNum++;
-    }
-}
-
-
 function createString(stringNo, fretNo) {
     let existCheck = document.getElementById(`${stringNo}_${fretNo}`);
 
@@ -133,6 +119,7 @@ function createString(stringNo, fretNo) {
 
         svg.setAttribute('width', '100%');
         svg.setAttribute('height', '30px');
+        svg.setAttribute('display', 'block');
 
         line.setAttribute('x1', '0');
         line.setAttribute('x2', '100%');
@@ -149,6 +136,41 @@ function createString(stringNo, fretNo) {
 
         //--------------------MIGHT BE USEFUL-----------------
         //DIVS LATER TO BE REMOVED/ADJUSTED ---> REMOVE DIVS KEEP SVGS AS ID HOLDERS
+    }
+}
+
+function createFret(stringNo, fretNo) {
+    let fretExist = document.querySelector(`div[id="${stringNo}_${fretNo}"] > svg[class="string"] > line[id="fret${fretNo}"]`);
+    if (fretExist == null) {
+        let fretDiv = document.querySelector(`div[id="${stringNo}_${fretNo}"] > svg[class="string"]`);
+
+        let fretLine = document.createElementNS('http://www.w3.org/2000/svg','line');
+
+        fretLine.setAttribute('id', `fret${fretNo}`);
+        fretLine.setAttribute('x1', '95%');
+        fretLine.setAttribute('x2', '95%');
+        fretLine.setAttribute('y1', '0');
+        fretLine.setAttribute('y2', '100%');
+        fretLine.setAttribute('stroke', 'darkblue');
+        fretLine.setAttribute('stroke-width', '5px');
+        fretLine.setAttribute('stroke-linecap', 'round');
+
+        fretDiv.appendChild(fretLine);
+    }
+}
+
+function createDiv(num) {
+
+    val.textContent = num;
+
+    createString(stringNum, fretNum);
+
+    createFret(stringNum, fretNum);
+
+    stringNum++;
+    if (stringNum > 6) {
+        stringNum = 1;
+        if (fretNum < num) fretNum++;
     }
 }
 

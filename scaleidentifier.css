@@ -48,14 +48,14 @@ select {
     max-height: 100px;
     margin: 0;
     padding: 0;
-    transform: translate(0, 20%);
+    transform: translate(0, 0%);
     border-radius: 15px;
 }
 
-line {
+/* line {
     stroke: darkblue; 
     stroke-width: 3px;
-}
+} */
 
 #fret-indicators {
     max-width: 768px;
