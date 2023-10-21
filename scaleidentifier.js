@@ -200,7 +200,7 @@ function removeDiv(num) {
 function createIndicators(frets) {
     if (fretCheck == false) {
         for (let i = 1; i <= frets; i++) {
-            let fretExist = document.getElementById(`fret${i}`)
+            let fretExist = document.getElementById(`fretno${i}`)
             if (fretExist == null) {
                 let div = document.createElement('div');
                 console.log(frets);
@@ -211,7 +211,7 @@ function createIndicators(frets) {
                     div.style.fontSize = 'larger';
                 }
                 
-                div.setAttribute('id', `fret${i}`);
+                div.setAttribute('id', `fretno${i}`);
         
                 fretIndicator.appendChild(div);
             }
