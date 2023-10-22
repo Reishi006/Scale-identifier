@@ -1,19 +1,26 @@
 let notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step;
+let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step; 2- 1.5 steps
+let stepsHminor = [0, 1, 0, 1, 1, 0, 2]; 
 let interval = 7;
 //0_2_4_5_7_9_11
 
-//let eStandard = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[4]];
 let eStandard = [4, 11, 7, 2, 9, 4];
-//let dStandard = [notes[3], notes[10], notes[6], notes[1], notes[8], notes[3]];
 let dStandard = [3, 10, 6, 1, 8, 3];
-//let dropD = [notes[4], notes[11], notes[7], notes[2], notes[9], notes[2]];
 let dropD = [4, 11, 7, 2, 9, 2];
 
 let j = 0;
+console.log(`C Major:`);
 for (let i = 0; i < interval + stepsMajor.length - 2; i++) {
     console.log(`${i}, ${notes[i + stepsMajor[j]]}`);
     i = i + stepsMajor[j];
+    j++;
+}
+j = 0;
+
+console.log(`C Hminor:`);
+for (let i = 0; i < interval + stepsHminor.length - 2; i++) {
+    console.log(`${i}, ${notes[i + stepsHminor[j]]}`);
+    i = i + stepsHminor[j];
     j++;
 }
 j = 0;
@@ -43,8 +50,6 @@ function changeTuning() {
         for (let j = 1; j <= 24; j++) {
             let text = container.querySelector(`[id="${i}_${j}"] > [class="string"] > text`);
             let circleExist = document.querySelector(`[id="${i}_${j}"] > [class="string"] > circle`);
-            //console.log(`circelExist: ${circleExist} i: ${i} and j: ${j}`);
-            //console.log(`countNote${countNote(i, j)}`);
             if (circleExist != null) {
                 text.textContent = `${countNote(i, j)}`;
                 if (countNote(i, j).indexOf('#') == -1) text.setAttribute('x', '35%'); //centering a note letter in case it takes 'one space'
