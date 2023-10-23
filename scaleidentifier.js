@@ -294,11 +294,6 @@ function removeAllCircles(stringNo, fretNo) {
 }
 
 //TESTING NEWER FEATURES/IDEAS
-/* const highlightNote = () => {
-    
-    clickedNote.style.fontWeight = 'bold';
-    console.log(clickedNote.textContent);
-} */
 
 clickedTuningNote.forEach((tnote) => {
     tnote.addEventListener('click', () => {
@@ -328,6 +323,7 @@ clickedNote.forEach((note) => {
             note.style.fontWeight = 'normal';
             note.style.backgroundColor = '';
         }
+        console.log(`clickedNote: ${note.innerHTML}`);
         console.log("forEach with notes worked");
     });
 });
@@ -346,6 +342,7 @@ clickedScale.forEach((scale) => {
             scale.style.color = 'black';
             scale.style.backgroundColor = '';
         }
+        console.log(`clickedNote: ${scale.innerHTML}`);
         console.log("forEach with scales worked");
     });
 });
