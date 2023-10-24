@@ -41,6 +41,8 @@ let beforeFrets = maxFrets;
 let stringNum = 1;
 let fretNum = 1;
 
+let noteCollection = []; //collectNotes()
+
 let fretHighlight = [3, 5, 7, 12, 15, 17, 19, 21, 24];
 let fretCheck = false;
 
@@ -84,6 +86,14 @@ function countNote(stringNo, fretNo) {
     //let noteIndex = notes.findIndex(eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]'));
     //console.log(`noteIndex ${noteIndex}`);
     return output;
+}
+
+function collectNotes(stringNo, fretNo) {
+    console.log(`noteCollection: ${noteCollection.length}`);
+    if (noteCollection.length <= 5 && noteCollection.includes(countNote(stringNo, fretNo)) == false) {
+        noteCollection.push(countNote(stringNo, fretNo));
+        console.log(`noteCollection: ${noteCollection}`);
+    }
 }
 
 function fretLimit() {
@@ -254,6 +264,8 @@ function createCircle(stringNo, fretNo) {
         text.setAttribute('fill', 'black');
         text.textContent = `${countNote(stringNo, fretNo)}`;
         text.setAttribute('font-size', '13px');
+
+        collectNotes(stringNo, fretNo);
 
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(circle);
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(text);
