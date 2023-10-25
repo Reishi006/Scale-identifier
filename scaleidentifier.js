@@ -9,13 +9,27 @@ let dStandard = [3, 10, 6, 1, 8, 3];
 let dropD = [4, 11, 7, 2, 9, 2];
 
 let j = 0;
-console.log(`C Major:`);
-for (let i = 0; i < interval + stepsMajor.length - 2; i++) {
-    console.log(`${i}, ${notes[i + stepsMajor[j]]}`);
+console.log(`Major:`);
+let MajorCount = 1;
+for (let i = 1; i < interval + stepsMajor.length - 2; i++) {
+
+    if (MajorCount == interval) break;
+
+    console.log(`${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`);
+
+    if (i + stepsMajor[j] >= 10 && MajorCount < interval) {
+        
+        i = 0;
+        j = 0;
+        console.log(`${i}, ${notes[0]}, j: ${j}`);
+    }
+    console.log(`MajorCount: ${MajorCount}`);
+    if (MajorCount < interval) MajorCount++;
     i = i + stepsMajor[j];
     j++;
 }
 j = 0;
+MajorCount = 0;
 
 console.log(`C Hminor:`);
 for (let i = 0; i < interval + stepsHminor.length - 2; i++) {
