@@ -11,7 +11,7 @@ let dropD = [4, 11, 7, 2, 9, 2];
 let j = 0;
 console.log(`Major:`);
 let MajorCount = 1;
-for (let i = 1; i < interval + stepsMajor.length - 2; i++) {
+for (let i = 3; i < interval + stepsMajor.length - 2; i++) {
 
     if (MajorCount == interval) break;
 
@@ -19,13 +19,15 @@ for (let i = 1; i < interval + stepsMajor.length - 2; i++) {
 
     if (i + stepsMajor[j] >= 10 && MajorCount < interval) {
         
-        i = 0;
+        i -= 9;
         j = 0;
-        console.log(`${i}, ${notes[0]}, j: ${j}`);
+        console.log(`${i}, ${notes[i]}, j: ${j}`);
     }
+
     console.log(`MajorCount: ${MajorCount}`);
     if (MajorCount < interval) MajorCount++;
     i = i + stepsMajor[j];
+
     j++;
 }
 j = 0;
