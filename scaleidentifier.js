@@ -11,17 +11,20 @@ let dropD = [4, 11, 7, 2, 9, 2];
 let j = 0;
 console.log(`Major:`);
 let MajorCount = 1;
-for (let i = 3; i < interval + stepsMajor.length - 2; i++) {
+for (let i = 7; i < interval + stepsMajor.length - 2; i++) {
 
     if (MajorCount == interval) break;
 
-    console.log(`${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`);
+    
 
     if (i + stepsMajor[j] >= 10 && MajorCount < interval) {
         
-        i -= 9;
-        j = 0;
-        console.log(`${i}, ${notes[i]}, j: ${j}`);
+        i -= 10;
+        //j = 0;
+        console.log(`${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`);
+    }
+    else if (i + stepsMajor[j] < 10 && MajorCount < interval){
+        console.log(`${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`);
     }
 
     console.log(`MajorCount: ${MajorCount}`);
@@ -370,7 +373,7 @@ clickedScale.forEach((scale) => {
             scale.style.color = 'black';
             scale.style.backgroundColor = '';
         }
-        console.log(`clickedNote: ${scale.innerHTML}`);
+        console.log(`clickedScale: ${scale.innerHTML}`);
         console.log("forEach with scales worked");
     });
 });
