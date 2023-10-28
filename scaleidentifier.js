@@ -10,28 +10,31 @@ let dropD = [4, 11, 7, 2, 9, 2];
 
 let j = 0;
 console.log(`Major:`);
-let MajorCount = 1;
-for (let i = 7; i < interval + stepsMajor.length - 2; i++) {
-
-    if (MajorCount == interval) break;
-
+let MajorCount = 0;
+for (let i = 7; i <= interval + stepsMajor.length - 2; i++) {
+    let noteNumber = 12;
+    
+    console.log(`starting i: ${i}`);
     
 
-    if (i + stepsMajor[j] >= 10 && MajorCount < interval) {
+    if (i >= noteNumber && MajorCount < interval) {
         
-        i -= 10;
+        i -= noteNumber;
         //j = 0;
-        console.log(`${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`);
+        console.log(`%c ${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`, 'color: #0099ad;');
     }
-    else if (i + stepsMajor[j] < 10 && MajorCount < interval){
-        console.log(`${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`);
+    else if (i < noteNumber && MajorCount < interval){
+        console.log(`%c ${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`, 'color: #0099ad;');
     }
 
-    console.log(`MajorCount: ${MajorCount}`);
-    if (MajorCount < interval) MajorCount++;
+    console.log(`MajorCount: ${MajorCount} and i: ${i}`);
+    
     i = i + stepsMajor[j];
-
+    console.log(`i = i + stepsMajor[j] ${i}`);
     j++;
+
+    if (MajorCount == interval) break;
+    if (MajorCount < interval) MajorCount++;
 }
 j = 0;
 MajorCount = 0;
