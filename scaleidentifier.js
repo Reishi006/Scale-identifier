@@ -11,11 +11,10 @@ let dropD = [4, 11, 7, 2, 9, 2];
 let j = 0;
 console.log(`Major:`);
 let MajorCount = 0;
-for (let i = 7; i <= interval + stepsMajor.length - 2; i++) {
+for (let i = 11; i <= interval + stepsMajor.length - 2; i++) {
     let noteNumber = 12;
     
     console.log(`starting i: ${i}`);
-    
 
     if (i >= noteNumber && MajorCount < interval) {
         
@@ -101,12 +100,9 @@ function countNote(stringNo, fretNo) {
     else if (noteIndex >= 12 && noteIndex < 24) output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo - 12')];
     else if (noteIndex >= 24) output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo - 24')];
     
-    //output = notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo-12')];
     console.log(`toNoteIndex: ${eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1] + fretNo')}`)
     console.log(`Output: ${output}`);
     console.log(`notes eval countNote ${notes[eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]')]}`);
-    //let noteIndex = notes.findIndex(eval(selectTuning.options[selectTuning.selectedIndex].value + '[stringNo-1]'));
-    //console.log(`noteIndex ${noteIndex}`);
     return output;
 }
 
@@ -324,6 +320,10 @@ function removeAllCircles(stringNo, fretNo) {
             cTN.style.backgroundColor = '';
         }
     }
+
+    //clearing noteCollection
+    noteCollection = [];
+
     console.log(`allcircles removed`);
 }
 
