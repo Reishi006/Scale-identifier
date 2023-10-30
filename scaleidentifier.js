@@ -1,5 +1,5 @@
 let notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
-let stepsMajor = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step; 2- 1.5 steps
+let stepsMajor  = [0, 1, 1, 0, 1, 1, 1]; //0 - half step; 1 - whole step; 2- 1.5 steps
 let stepsHminor = [0, 1, 0, 1, 1, 0, 2]; 
 let interval = 7;
 //0_2_4_5_7_9_11
@@ -9,42 +9,68 @@ let dStandard = [3, 10, 6, 1, 8, 3];
 let dropD = [4, 11, 7, 2, 9, 2];
 
 let j = 0;
-console.log(`Major:`);
-let MajorCount = 0;
+console.log(`Major: ----------------->`);
+let majorCount = 0;
 for (let i = 11; i <= interval + stepsMajor.length - 2; i++) {
     let noteNumber = 12;
     
     console.log(`starting i: ${i}`);
 
-    if (i >= noteNumber && MajorCount < interval) {
+    i = i + stepsMajor[j];
+
+    if (i >= noteNumber && majorCount < interval) {
         
         i -= noteNumber;
         //j = 0;
-        console.log(`%c ${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`, 'color: #0099ad;');
+        console.log(`%c ${i}, ${notes[i]}, j: ${j} i higher/equal`, 'color: #0099ad;');
     }
-    else if (i < noteNumber && MajorCount < interval){
-        console.log(`%c ${i}, ${notes[i + stepsMajor[j]]}, j: ${j}`, 'color: #0099ad;');
+    else if (i < noteNumber && majorCount < interval){
+        console.log(`%c ${i}, ${notes[i]}, j: ${j} i lower`, 'color: #0099ad;');
     }
 
-    console.log(`MajorCount: ${MajorCount} and i: ${i}`);
-    
-    i = i + stepsMajor[j];
+    console.log(`majorCount: ${majorCount} and i: ${i}`);
+
     console.log(`i = i + stepsMajor[j] ${i}`);
     j++;
 
-    if (MajorCount == interval) break;
-    if (MajorCount < interval) MajorCount++;
+    if (majorCount == interval) break;
+    if (majorCount < interval) majorCount++;
 }
 j = 0;
-MajorCount = 0;
+majorCount = 0;
 
-console.log(`C Hminor:`);
-for (let i = 0; i < interval + stepsHminor.length - 2; i++) {
-    console.log(`${i}, ${notes[i + stepsHminor[j]]}`);
+
+
+console.log(`Hminor: ----------------->`);
+let hMinorCount = 0;
+for (let i = 1; i <= interval + stepsHminor.length - 2; i++) {
+    let noteNumber = 12;
+    
+    console.log(`starting i: ${i}`);
+
     i = i + stepsHminor[j];
+
+    if (i >= noteNumber && hMinorCount < interval) {
+        
+        i -= noteNumber;
+        //j = 0;
+        console.log(`%c ${i}, ${notes[i]}, j: ${j} i higher/equal`, 'color: #36789e;');
+    }
+    else if (i < noteNumber && hMinorCount < interval){
+        console.log(`%c ${i}, ${notes[i]}, j: ${j} i lower`, 'color: #36789e;');
+    }
+
+    console.log(`hMinorCount: ${hMinorCount} and i: ${i}`);
+    
+    
+    console.log(`i = i + stepsHminor[j] ${i}`);
     j++;
+
+    if (hMinorCount == interval) break;
+    if (hMinorCount < interval) hMinorCount++;
 }
 j = 0;
+hMinorCount = 0;
 
 let clickedTuningNote = document.querySelectorAll(`article[id="container"] > div`);
 
