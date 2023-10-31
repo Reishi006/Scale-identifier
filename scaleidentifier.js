@@ -14,7 +14,7 @@ let majorCount = 0;
 for (let i = 11; i <= interval + stepsMajor.length - 2; i++) {
     let noteNumber = 12;
     
-    console.log(`starting i: ${i}`);
+    console.log(`%c starting i: ${i}`, 'color: #00bfd9;');
 
     i = i + stepsMajor[j];
 
@@ -28,9 +28,9 @@ for (let i = 11; i <= interval + stepsMajor.length - 2; i++) {
         console.log(`%c ${i}, ${notes[i]}, j: ${j} i lower`, 'color: #0099ad;');
     }
 
-    console.log(`majorCount: ${majorCount} and i: ${i}`);
+    console.log(`majorCount: ${majorCount}`);
 
-    console.log(`i = i + stepsMajor[j] ${i}`);
+    //console.log(`i = i + stepsMajor[j] ${i}`);
     j++;
 
     if (majorCount == interval) break;
@@ -46,7 +46,7 @@ let hMinorCount = 0;
 for (let i = 1; i <= interval + stepsHminor.length - 2; i++) {
     let noteNumber = 12;
     
-    console.log(`starting i: ${i}`);
+    console.log(`%c starting i: ${i}`, 'color: #00bfd9;');
 
     i = i + stepsHminor[j];
 
@@ -54,16 +54,16 @@ for (let i = 1; i <= interval + stepsHminor.length - 2; i++) {
         
         i -= noteNumber;
         //j = 0;
-        console.log(`%c ${i}, ${notes[i]}, j: ${j} i higher/equal`, 'color: #36789e;');
+        console.log(`%c ${i}, ${notes[i]}, j: ${j} i higher/equal`, 'color: #48a1d4;');
     }
     else if (i < noteNumber && hMinorCount < interval){
-        console.log(`%c ${i}, ${notes[i]}, j: ${j} i lower`, 'color: #36789e;');
+        console.log(`%c ${i}, ${notes[i]}, j: ${j} i lower`, 'color: #48a1d4;');
     }
 
-    console.log(`hMinorCount: ${hMinorCount} and i: ${i}`);
+    console.log(`hMinorCount: ${hMinorCount}`);
     
     
-    console.log(`i = i + stepsHminor[j] ${i}`);
+    //console.log(`i = i + stepsHminor[j] ${i}`);
     j++;
 
     if (hMinorCount == interval) break;
@@ -134,9 +134,14 @@ function countNote(stringNo, fretNo) {
 
 function collectNotes(stringNo, fretNo) {
     console.log(`noteCollection: ${noteCollection.length}`);
-    if (noteCollection.length <= 5 && noteCollection.includes(countNote(stringNo, fretNo)) == false) {
+    if (noteCollection.length <= 10 && noteCollection.includes(countNote(stringNo, fretNo)) == false) {
         noteCollection.push(countNote(stringNo, fretNo));
         console.log(`noteCollection: ${noteCollection}`);
+    }
+    else if (noteCollection.length <= 10 && noteCollection.includes(countNote(stringNo, fretNo)) == true) {
+        let rmNote = noteCollection.indexOf(countNote(stringNo, fretNo));
+        noteCollection.splice(rmNote, 1);
+        console.log(`noteCollection: ${noteCollection} (one removed)`);
     }
 }
 
@@ -315,6 +320,7 @@ function createCircle(stringNo, fretNo) {
         container.querySelector(`[id="${stringNo}_${fretNo}"] > [class="string"]`).appendChild(text);
         console.log('clicked');
     } else {
+        collectNotes(stringNo, fretNo);
         removeCircle(stringNo, fretNo);
     }
 }
