@@ -89,6 +89,7 @@ let stringNum = 1;
 let fretNum = 1;
 
 let noteCollection = []; //collectNotes()
+let allNotesClicked = []; //^
 
 let fretHighlight = [3, 5, 7, 12, 15, 17, 19, 21, 24];
 let fretCheck = false;
@@ -134,11 +135,42 @@ function countNote(stringNo, fretNo) {
 
 function collectNotes(stringNo, fretNo) {
     console.log(`noteCollection: ${noteCollection.length}`);
+
+    //allNotesClicked, countNote(stringNo, fretNo)
+    function getAllIndexes(arr, val) {
+        let indexes = [];
+        let i = -1;
+        while ((i = arr.indexOf(val, i+1)) != -1) {
+            indexes.push(i);
+        }
+        return indexes;
+    }
+
+    function removeNoteOnce(arr, val) { 
+        let index = arr.indexOf(val);
+        if (index > -1) {
+            arr.splice(index, 1);
+        }
+        console.log(`removeNoteOnce ---> removed`);
+        return arr;
+    }
+
     if (noteCollection.length <= 10 && noteCollection.includes(countNote(stringNo, fretNo)) == false) {
         noteCollection.push(countNote(stringNo, fretNo));
         console.log(`noteCollection: ${noteCollection}`);
+
+        allNotesClicked.push(`${countNote(stringNo, fretNo)}`);
+        console.log(`allNotesClicked: ${allNotesClicked}`);
+
+        console.log(`getAllIndexes ${getAllIndexes(allNotesClicked, countNote(stringNo, fretNo))}`);
     }
-    else if (noteCollection.length <= 10 && noteCollection.includes(countNote(stringNo, fretNo)) == true) {
+    else if (noteCollection.length <= 10 
+        && noteCollection.includes(countNote(stringNo, fretNo)) == true 
+        && getAllIndexes(allNotesClicked, countNote(stringNo, fretNo)) > 0) {
+
+        removeNoteOnce(allNotesClicked, countNote(stringNo, fretNo));
+        console.log(`allNotesClicked: ${allNotesClicked}`);
+
         let rmNote = noteCollection.indexOf(countNote(stringNo, fretNo));
         noteCollection.splice(rmNote, 1);
         console.log(`noteCollection: ${noteCollection} (one removed)`);
@@ -355,6 +387,7 @@ function removeAllCircles(stringNo, fretNo) {
 
     //clearing noteCollection
     noteCollection = [];
+    allNotesClicked = [];
 
     console.log(`allcircles removed`);
 }
