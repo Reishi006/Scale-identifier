@@ -319,8 +319,8 @@ function createIndicators(frets) {
 
 function removeIndicators(frets) {
     for (let i = beforeFrets; i > frets; i--) {
-        document.getElementById(`fret${i}`).remove();
-        console.log(`fret${i} indicator removal`);
+        document.getElementById(`fretno${i}`).remove();
+        console.log(`fretno${i} indicator removal`);
     }
 }
 
